@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_registration_graph"
+    app:startDestination="@id/registerWelcomeFragment">
+
+
+    <fragment
+        android:id="@+id/registerWelcomeFragment"
+        android:name="com.trustathanas.absaclone.activities.register.RegisterWelcomeFragment"
+        android:label="register_welcome_fragment"
+        tools:layout="@layout/register_welcome_fragment" >
+        <action
+            android:id="@+id/action_registerWelcomeFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_registerWelcomeFragment_to_registerLoginFragment"
+            app:destination="@id/registerLoginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerLoginFragment"
+        android:name="com.trustathanas.absaclone.activities.register.RegisterLoginFragment"
+        android:label="register_login_fragment"
+        tools:layout="@layout/register_login_fragment" />
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.trustathanas.absaclone.activities.register.RegisterFragment"
+        android:label="register_fragment"
+        tools:layout="@layout/register_fragment" />
+</navigation>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/destination_home">
+
+    <fragment
+        android:id="@+id/destination_home"
+        android:name="com.trustathanas.absaclone.activities.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/destination_messages"
+        android:name="com.trustathanas.absaclone.activities.home.MessageFragment"
+        android:label="Messages"
+        tools:layout="@layout/fragment_message" />
+    <fragment
+        android:id="@+id/destination_more"
+        android:name="com.trustathanas.absaclone.activities.home.MoreFragment"
+        android:label="More"
+        tools:layout="@layout/fragment_more" />
+</navigation>

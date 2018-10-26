@@ -1,0 +1,101 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CustomNumberPadButton" parent="android:Widget.Button">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="CustomNumberPadButton.background">
+        <item name="android:background">@drawable/button_custom_number_pad</item>
+    </style>
+
+    <style name="CustomProgressBar" parent="android:Widget.ProgressBar">
+
+    </style>
+
+    <!-- Custom Button Style for the pre login fill style -->
+    <style name="CustomButtonFilled" parent="android:Widget.Button">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:drawable">@drawable/button_standard_filled</item>
+    </style>
+
+    <style name="CustomButtonFilled.background">
+        <item name="android:background">@drawable/button_standard_filled</item>
+    </style>
+
+    <style name="CustomNumberPadButton.background.blank">
+        <item name="android:background">@drawable/number_pad_clear</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:backgroundTint">@color/colorTransparent</item>
+
+    </style>
+
+    <!-- Custom Button Style for the pre login holo style  -->
+    <style name="CustomButtonHolo">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="CustomButtonHolo.background">
+        <item name="android:background">@drawable/button_standard_holo</item>
+    </style>
+
+    <style name="CustomContentTextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">40dp</item>
+        <item name="android:layout_marginStart">40dp</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:typeface">normal</item>
+
+    </style>
+
+    <style name="CustomHeadingTitleTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name="custom_textInputLayout" parent="TextAppearance.AppCompat">
+
+    </style>
+
+</resources>

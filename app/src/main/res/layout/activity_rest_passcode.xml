@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.resetaccount.RestPasscodeActivity">
+
+    <Button
+        android:id="@+id/btn_reset_passcode"
+        style="@style/CustomButtonFilled.background"
+        android:background="@drawable/button_standard_filled"
+        android:fontFamily="@font/roboto"
+        android:text="@string/label_reset_passcode"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_help_reset_passcode"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_help_outline_black_24dp" />
+
+    <TextView
+        android:id="@+id/tv_content_reset_passcode"
+        style="@style/CustomContentTextView"
+        android:layout_marginTop="32dp"
+        android:text="@string/label_content_reset_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_reset_passcode_label" />
+
+    <TextView
+        android:id="@+id/tv_reset_passcode_label"
+        style="@style/CustomHeadingTitleTextView"
+        android:text="@string/label_reset_passcode"
+        app:layout_constraintEnd_toEndOf="@+id/img_help_reset_passcode"
+        app:layout_constraintStart_toStartOf="@+id/img_help_reset_passcode"
+        app:layout_constraintTop_toBottomOf="@+id/img_help_reset_passcode" />
+</android.support.constraint.ConstraintLayout>

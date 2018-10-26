@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ABSAclone</string>
+    <string name="terms_conditions"><![CDATA[Terms & conditions]]></string>
+    <string name="clear_passcode">Clear passcode</string>
+    <string name="attempts_remaining">%d$ attempts remaining</string>
+    <string name="label_reset_passcode">Reset Passcode</string>
+    <string name="label_content_reset_info">Resetting your password will require you to log in with your account number and pin in order to log in to the app</string>
+    <string name="label_account_number">Account Number</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_button_login">Login</string>
+    <string name="hint_user_number">User Number</string>
+    <string name="hint_enter_your_pin">Enter your pin</string>
+    <string name="hint_enter_your_access_account_number">Enter your access account number</string>
+    <string name="label_button_continue">Continue</string>
+    <string name="label_register_heading">Register for online banking</string>
+    <string name="hint_atm_card_number">Enter your ATM card number</string>
+    <string name="hin_atm_pin">Enter ATM PIN</string>
+    <string name="welcome_text_one">Bank on the go like never before.</string>
+    <string name="welcome_text_two">All of your accounts in one place.</string>
+    <string name="welcome_text_three">Pay anyone, anytime, anywhere.</string>
+    <string name="welcome_text_four">Buy airtime and prepaid data with a first step.</string>
+    <string name="welcome_text_five">Verify transactions to protect your account from fraud.</string>
+</resources>

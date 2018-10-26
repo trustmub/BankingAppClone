@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.resetaccount.PasscodeLockedActivity">
+
+    <Button
+        android:id="@+id/btn_reset_locked"
+        style="@style/CustomButtonHolo.background"
+        android:fontFamily="@font/roboto"
+        android:text="@string/label_reset_passcode"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/CustomContentTextView"
+        android:layout_marginBottom="32dp"
+        android:text="you entered your passocde incorrectyl 3 times."
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/CustomContentTextView"
+        android:layout_marginBottom="32dp"
+        android:text="To login please reset your passcode using your account number and PIN"
+        app:layout_constraintBottom_toTopOf="@+id/btn_reset_locked"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_passcode_locked_label"
+        style="@style/CustomHeadingTitleTextView"
+        android:layout_marginBottom="32dp"
+        android:text="Passcode Locked"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.LoginActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+
+    <View
+        android:id="@+id/v_one"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="@drawable/passcode_markers"
+        app:layout_constraintBottom_toBottomOf="@+id/v_three"
+        app:layout_constraintEnd_toStartOf="@+id/v_two"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/v_three" />
+
+    <View
+        android:id="@+id/v_five"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="@drawable/passcode_markers"
+        app:layout_constraintBottom_toBottomOf="@+id/v_three"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/v_four"
+        app:layout_constraintTop_toTopOf="@+id/v_three" />
+
+    <View
+        android:id="@+id/v_three"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/passcode_markers"
+        app:layout_constraintEnd_toStartOf="@+id/v_four"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/v_two"
+        app:layout_constraintTop_toBottomOf="@+id/tv_exter_passcode_label" />
+
+    <View
+        android:id="@+id/v_four"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/passcode_markers"
+        app:layout_constraintBottom_toBottomOf="@+id/v_three"
+        app:layout_constraintEnd_toStartOf="@+id/v_five"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/v_three"
+        app:layout_constraintTop_toTopOf="@+id/v_three" />
+
+    <View
+        android:id="@+id/v_two"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/passcode_markers"
+        app:layout_constraintBottom_toBottomOf="@+id/v_three"
+        app:layout_constraintEnd_toStartOf="@+id/v_three"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/v_one"
+        app:layout_constraintTop_toTopOf="@+id/v_three" />
+
+    <ImageButton
+        android:id="@+id/btn_delete"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/number_pad_clear"
+        android:contentDescription="@string/clear_passcode"
+        android:fontFamily="@font/roboto"
+        android:src="@drawable/ic_arrow_back_black_24dp"
+        android:textSize="24sp"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_zero"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_zero"
+        app:layout_constraintTop_toTopOf="@+id/btn_zero" />
+
+    <Button
+        android:id="@+id/btn_forgot_password"
+        style="@style/CustomNumberPadButton.background.blank"
+        android:onClick="onResetPasscodeClicked"
+        android:text="@string/label_reset_passcode"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_zero"
+        app:layout_constraintEnd_toStartOf="@+id/btn_zero"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_zero" />
+
+
+    <TextView
+        android:id="@+id/tv_contact_us"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:onClick="onContactUsClicked"
+        android:text="Contact Us"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_login_user_label"
+        app:layout_constraintEnd_toStartOf="@+id/tv_login_user_label"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_login_user_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="John Doe"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tv_other_users"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_contact_us"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_other_users"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Users"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_login_user_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_login_user_label"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_exter_passcode_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Enter Passcode"
+        app:layout_constraintEnd_toEndOf="@+id/iv_profile_image_convas"
+        app:layout_constraintStart_toStartOf="@+id/iv_profile_image_convas"
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile_image_convas" />
+
+
+    <TextView
+        android:id="@+id/tv_attempts_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/attempts_remaining"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/tv_exter_passcode_label"
+        app:layout_constraintStart_toStartOf="@+id/tv_exter_passcode_label"
+        app:layout_constraintTop_toBottomOf="@+id/v_three" />
+
+    <ImageView
+        android:id="@+id/iv_profile_image_convas"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_user_label"
+        app:srcCompat="@drawable/profile_image_placeholder" />
+
+    <Button
+        android:id="@+id/btn_one"
+        style="@style/CustomNumberPadButton.background"
+        android:text="1"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_two"
+        app:layout_constraintEnd_toStartOf="@+id/btn_two"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_two" />
+
+    <Button
+        android:id="@+id/btn_two"
+        style="@style/CustomNumberPadButton.background"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="2"
+        app:layout_constraintEnd_toStartOf="@+id/btn_three"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_one"
+        app:layout_constraintTop_toBottomOf="@+id/tv_attempts_label" />
+
+    <Button
+        android:id="@+id/btn_three"
+        style="@style/CustomNumberPadButton.background"
+        android:text="3"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_two"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_two"
+        app:layout_constraintTop_toTopOf="@+id/btn_two" />
+
+    <Button
+        android:id="@+id/btn_four"
+        style="@style/CustomNumberPadButton.background"
+        android:text="4"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_five"
+        app:layout_constraintEnd_toStartOf="@+id/btn_five"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_five" />
+
+    <Button
+        android:id="@+id/btn_five"
+        style="@style/CustomNumberPadButton.background"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="5"
+        app:layout_constraintEnd_toStartOf="@+id/btn_six"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_four"
+        app:layout_constraintTop_toBottomOf="@+id/btn_two" />
+
+    <Button
+        android:id="@+id/btn_six"
+        style="@style/CustomNumberPadButton.background"
+        android:text="6"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_five"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_five"
+        app:layout_constraintTop_toTopOf="@+id/btn_five" />
+
+    <Button
+        android:id="@+id/btn_seven"
+        style="@style/CustomNumberPadButton.background"
+        android:text="7"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_eight"
+        app:layout_constraintEnd_toStartOf="@+id/btn_eight"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_eight" />
+
+    <Button
+        android:id="@+id/btn_eight"
+        style="@style/CustomNumberPadButton.background"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="8"
+        app:layout_constraintEnd_toStartOf="@+id/btn_nine"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_seven"
+        app:layout_constraintTop_toBottomOf="@+id/btn_five" />
+
+    <Button
+        android:id="@+id/btn_nine"
+        style="@style/CustomNumberPadButton.background"
+        android:text="9"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_eight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_eight"
+        app:layout_constraintTop_toTopOf="@+id/btn_eight" />
+
+    <Button
+        android:id="@+id/btn_zero"
+        style="@style/CustomNumberPadButton.background"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="0"
+        app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_forgot_password"
+        app:layout_constraintTop_toBottomOf="@+id/btn_eight" />
+
+
+    <TextView
+        android:id="@+id/tv_login_absa_site_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="absa.co.za"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_login_ts_and_cs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="onTermsAndConditionsClicked"
+        android:text="@string/terms_conditions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
