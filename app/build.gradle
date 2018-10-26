@@ -47,7 +47,7 @@ dependencies {
 //    implementation "com.google.android.material:material:1.0.0"
 
     /**Co-routine library*/
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.22.5"
+//    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.27.0-eap13"
 
     /** Square libraries */
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

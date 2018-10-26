@@ -23,5 +23,5 @@ class RegisterActivity : BaseActivity() {
 
     }
 
-    override fun onSupportNavigateUp() = findNavController(R.id.registration_host_fragment).navigateUp()
+//    override fun onSupportNavigateUp() = findNavController(R.id.registration_host_fragment).navigateUp()
 }
