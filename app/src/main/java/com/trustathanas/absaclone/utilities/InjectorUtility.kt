@@ -14,5 +14,4 @@ object InjectorUtility {
         val repository = LoginRepository.getInstance(App.applicationDatabase.loginDao(), App.executorService)
         return LoginViewModelFactory(repository)
     }
-
 }

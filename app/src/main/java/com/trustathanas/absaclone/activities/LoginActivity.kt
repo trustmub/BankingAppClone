@@ -41,7 +41,9 @@ class LoginActivity : BaseActivity() {
 
     private fun initializeUi() {
         val factory = InjectorUtility.provideLoginViewModelFactory()
+
         viewModel = ViewModelProviders.of(this, factory).get(LoginViewModel::class.java)
+
         tv_login_user_label.text = App.prefes.fullname
 
         btn_one.numberButtonClicked(1)

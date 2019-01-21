@@ -18,4 +18,5 @@ internal class ViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter
     override fun getCount(): Int {
         return fragmentList.size
     }
+
 }

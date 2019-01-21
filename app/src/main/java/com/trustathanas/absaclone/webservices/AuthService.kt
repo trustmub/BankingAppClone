@@ -2,6 +2,8 @@ package com.trustathanas.absaclone.webservices
 
 import android.arch.lifecycle.LiveData
 import com.trustathanas.absaclone.models.*
+import com.trustathanas.absaclone.models.account_services.AccountServices
+import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Headers
@@ -18,4 +20,7 @@ interface AuthService {
     @Headers("Content-Type: application/json")
     @POST("login/register/")
     fun register(@Body register: Register): Call<RegisterResponse>
+
+    @POST("account/services/")
+    fun accountServices(@Body login: Login): Call<AccountServices>
 }

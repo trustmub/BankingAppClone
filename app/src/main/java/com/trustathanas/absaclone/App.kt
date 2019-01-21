@@ -17,7 +17,7 @@ class App : Application() {
         lateinit var appContext: Context
         lateinit var executorService: ExecutorService
         lateinit var applicationDatabase: ApplicationDatabaseInstance
-        val loginService = AuthAPI.getApiInstance()!!.create(AuthService::class.java)
+        val webServices = AuthAPI.getApiInstance()!!.create(AuthService::class.java)
 
     }
 

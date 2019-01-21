@@ -25,7 +25,7 @@ class LoginRepository private constructor(private val loginDao: LoginDao, privat
 
     fun login(user: Login): LiveData<AuthResponse> {
         val result: MutableLiveData<AuthResponse> = MutableLiveData()
-        App.loginService.login(user).enqueue(LoginCallback(result))
+        App.webServices.login(user).enqueue(LoginCallback(result))
         println("Response in repo, login $result")
         return result
     }
