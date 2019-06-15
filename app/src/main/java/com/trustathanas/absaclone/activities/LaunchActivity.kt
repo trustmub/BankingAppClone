@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.trustathanas.absaclone.App
+import com.trustathanas.absaclone.activities.auth.LoginActivity
 import com.trustathanas.absaclone.activities.register.RegisterActivity
 
 class LaunchActivity : AppCompatActivity() {
@@ -14,7 +15,8 @@ class LaunchActivity : AppCompatActivity() {
         if (App.prefes.isRegistered) {
             startActivity(Intent(this, LoginActivity::class.java))
         } else {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
+//            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 

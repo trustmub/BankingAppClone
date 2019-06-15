@@ -49,6 +49,27 @@ dependencies {
     implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-alpha06"
 //    implementation "com.google.android.material:material:1.0.0"
 
+    /** RxJava and RxKotlin libraries*/
+    // RxAndroid
+    def rxandroid_version = '2.1.1'
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+
+    // RxJava
+    def rxjava_version = '2.1.1'
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+
+    def rxkotlin_version = '2.3.0'
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
+
+    /**Dagger Dependency Injection core and android*/
+    def dagger_version = "2.22"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    implementation "com.google.dagger:dagger-android:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
     /**Co-routine library*/
 //    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.27.0-eap13"
 

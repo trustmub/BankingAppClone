@@ -1,16 +1,24 @@
 package com.trustathanas.absaclone
 
-import android.app.Application
 import android.content.Context
+import com.trustathanas.absaclone.di.AppComponent
+import com.trustathanas.absaclone.di.DaggerAppComponent
 import com.trustathanas.absaclone.utilities.ApplicationDatabaseInstance
 import com.trustathanas.absaclone.utilities.SharedPreferencesMain
 import com.trustathanas.absaclone.webservices.AuthAPI
 import com.trustathanas.absaclone.webservices.AuthService
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 
-class App : Application() {
+class App : DaggerApplication() {
+
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication>? {
+        return DaggerAppComponent.builder().application(this).build()
+//        return null
+    }
 
     companion object {
         lateinit var prefes: SharedPreferencesMain

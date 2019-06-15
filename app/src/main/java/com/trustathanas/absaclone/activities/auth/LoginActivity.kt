@@ -1,18 +1,18 @@
-package com.trustathanas.absaclone.activities
+package com.trustathanas.absaclone.activities.auth
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.trustathanas.absaclone.App
 import com.trustathanas.absaclone.R
+import com.trustathanas.absaclone.activities.BaseActivity
+import com.trustathanas.absaclone.activities.TermsActivity
 import com.trustathanas.absaclone.activities.contactus.ContactsActivity
 import com.trustathanas.absaclone.activities.home.MainActivity
 import com.trustathanas.absaclone.activities.resetaccount.PasscodeLockedActivity
@@ -21,13 +21,21 @@ import com.trustathanas.absaclone.models.Login
 import com.trustathanas.absaclone.models.LoginModel
 import com.trustathanas.absaclone.utilities.InjectorUtility
 import com.trustathanas.absaclone.viewmodels.LoginViewModel
+import com.trustathanas.absaclone.viewmodels.ViewModelProviderFactory
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
+import javax.inject.Inject
 
-class LoginActivity : BaseActivity() {
+class LoginActivity
+@Inject private constructor(
+        private val providerFactory: ViewModelProviderFactory
+) : DaggerAppCompatActivity() {
 
-    override val tag: String = "LoginActivity"
-    override fun getLayout(): Int = R.layout.activity_login
 
+    val tag: String = "LoginActivity"
+    fun getLayout(): Int = R.layout.activity_login
+
+    private lateinit var loginViewModel: LoginViewModel
 
     private lateinit var viewModel: LoginViewModel
     var passcodeSequence: MutableList<Int> = mutableListOf()
@@ -36,7 +44,12 @@ class LoginActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayout())
+        this.init()
         initializeUi()
+    }
+
+    private fun init() {
+        loginViewModel = ViewModelProviders.of(this, providerFactory).get(LoginViewModel::class.java)
     }
 
     private fun initializeUi() {
@@ -102,15 +115,14 @@ class LoginActivity : BaseActivity() {
         val loginAtt = viewModel.login(Login(33600929, code.toInt(), 1))
 
         loginAtt.observe(this, Observer {
-            if (it != null){
+            if (it != null) {
                 println("Response ${it.response.customer.fullName}")
                 println("Response ${it.response.customer.email}")
                 println("Response ${it.response.customer.balance}")
                 println("Response ${it.response.customer.accountType}")
                 resetMarker()
                 startActivity(Intent(this, MainActivity::class.java))
-            }
-            else{
+            } else {
                 resetMarker()
                 println("Response: Login failed")
             }

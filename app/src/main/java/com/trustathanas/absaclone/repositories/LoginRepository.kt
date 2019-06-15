@@ -33,6 +33,7 @@ class LoginRepository private constructor(private val loginDao: LoginDao, privat
     inner class LoginCallback(val result: MutableLiveData<AuthResponse>) : Callback<AuthResponse> {
         override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
             println("The response failed ${t.message}")
+            println("The full response failed ${t}")
 
         }
 
@@ -44,6 +45,7 @@ class LoginRepository private constructor(private val loginDao: LoginDao, privat
                     response.body()
                 }
                 else -> {
+                    println("Failed with error ${response}")
                     response.body()
                 }
             }
