@@ -13,7 +13,7 @@ class HomeRepository {
 
     fun accountServices(user: Login): LiveData<AccountServices> {
         val result: MutableLiveData<AccountServices> = MutableLiveData()
-        App.webServices.accountServices(user).enqueue(AccountServicesCallback(result))
+//        App.webServices.accountServices(user).enqueue(AccountServicesCallback(result))
         return result
 
     }

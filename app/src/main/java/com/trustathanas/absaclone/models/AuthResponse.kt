@@ -1,6 +1,7 @@
 package com.trustathanas.absaclone.models
 
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class Response(@SerializedName("user")
@@ -10,11 +11,11 @@ data class Response(@SerializedName("user")
 
 
 data class User(@SerializedName("device")
-                val device: String = "",
+                var device: String = "",
                 @SerializedName("account")
-                val account: Int = 0,
+                var account: Int = 0,
                 @SerializedName("user_number")
-                val userNumber: Int = 0)
+                var userNumber: Int = 0)
 
 
 data class Customer(@SerializedName("account_number")
@@ -29,11 +30,19 @@ data class Customer(@SerializedName("account_number")
                     val email: String = "")
 
 
-data class AuthResponse(@SerializedName("response")
-                        val response: Response)
+class AuthResponse {
+
+    @SerializedName("response")
+    @Expose
+    var response: Response? = null
+
+    constructor(response: Response) {
+        this.response = response
+    }
+
+    constructor()
+}
 
 
 data class RegisterResponse(@SerializedName("response")
                             val response: String)
-
-

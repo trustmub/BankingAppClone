@@ -13,22 +13,22 @@ abstract class ApplicationDatabaseInstance : RoomDatabase() {
 
     abstract fun loginDao(): LoginDao
 
-    companion object {
-
-        @Volatile
-        var instance: ApplicationDatabaseInstance? = null
-
-        fun getDatabase(context: Context): ApplicationDatabaseInstance? {
-            if (instance == null) {
-                synchronized(ApplicationDatabaseInstance::class.java) {
-                    if (instance == null) {
-                        instance = Room.databaseBuilder(context.applicationContext,
-                                ApplicationDatabaseInstance::class.java, "absa_clone_db")
-                                .build()
-                    }
-                }
-            }
-            return instance
-        }
-    }
+//    companion object {
+//
+//        @Volatile
+//        var instance: ApplicationDatabaseInstance? = null
+//
+//        fun getDatabase(context: Context): ApplicationDatabaseInstance? {
+//            if (instance == null) {
+//                synchronized(ApplicationDatabaseInstance::class.java) {
+//                    if (instance == null) {
+//                        instance = Room.databaseBuilder(context.applicationContext,
+//                                ApplicationDatabaseInstance::class.java, "absa_clone_db")
+//                                .build()
+//                    }
+//                }
+//            }
+//            return instance
+//        }
+//    }
 }

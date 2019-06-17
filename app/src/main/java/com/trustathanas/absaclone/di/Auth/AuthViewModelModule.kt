@@ -15,6 +15,7 @@ import dagger.multibindings.IntoMap
  *          @ViewModelKey(AuthViewModel.class)
  *          abstract fun bindAuthViewModel(AuthViewModel viewModel): ViewModel;
  */
+@Suppress("unused")
 @Module
 abstract class AuthViewModelModule {
 

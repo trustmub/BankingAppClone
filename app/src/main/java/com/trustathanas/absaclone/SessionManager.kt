@@ -3,6 +3,8 @@ package com.trustathanas.absaclone
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MediatorLiveData
 import com.trustathanas.absaclone.activities.auth.AuthResource
+import com.trustathanas.absaclone.models.Customer
+import com.trustathanas.absaclone.models.Response
 import com.trustathanas.absaclone.models.User
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -10,11 +12,12 @@ import javax.inject.Singleton
 @Singleton
 class SessionManager @Inject constructor() {
 
-    private val cachedUser: MediatorLiveData<AuthResource<User>> = MediatorLiveData()
+    private val cachedUser: MediatorLiveData<AuthResource<Response>> = MediatorLiveData()
+    private val cachedCustomer: MediatorLiveData<AuthResource<Customer>> = MediatorLiveData()
 
-    fun authenticateWithId(source: LiveData<AuthResource<User>>) {
+    fun authenticate(source: LiveData<AuthResource<Response>>) {
         if (cachedUser != null) {
-            cachedUser.value = AuthResource.loading(null as User?)
+            cachedUser.value = AuthResource.loading(null as Response?)
             cachedUser.addSource(source) { userAuthResource ->
                 cachedUser.value = userAuthResource
                 cachedUser.removeSource(source)
@@ -22,7 +25,7 @@ class SessionManager @Inject constructor() {
         }
     }
 
-    fun getAuthUser(): LiveData<AuthResource<User>> {
+    fun getAuthUser(): LiveData<AuthResource<Response>> {
         return cachedUser
     }
 }

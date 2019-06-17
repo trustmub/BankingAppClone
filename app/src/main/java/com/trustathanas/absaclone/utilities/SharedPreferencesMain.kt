@@ -1,8 +1,11 @@
 package com.trustathanas.absaclone.utilities
 
 import android.content.Context
+import javax.inject.Inject
+import javax.inject.Singleton
 
-open class SharedPreferencesMain(context: Context) {
+@Singleton
+open class SharedPreferencesMain @Inject constructor(private val context: Context) {
 
     private val PREF_FILE = "AppPreferences"
     private val preferences = context.getSharedPreferences(PREF_FILE, 0)

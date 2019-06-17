@@ -11,14 +11,16 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityBuilderModule {
 
+//    @AuthScope
+//    @ContributesAndroidInjector(
+//            modules = [AuthViewModelModule::class, AuthModule::class]
+//    )
+//    abstract fun contributesRegisterActivity(): RegisterActivity
+
+
     @AuthScope
     @ContributesAndroidInjector(
             modules = [AuthViewModelModule::class, AuthModule::class]
     )
-    abstract fun contributesRegisterActivity(): RegisterActivity
-
-
-    @AuthScope
-    @ContributesAndroidInjector
     abstract fun contributesLoginActivity(): LoginActivity
 }

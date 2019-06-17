@@ -20,6 +20,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
@@ -58,6 +61,9 @@ dependencies {
     def rxjava_version = '2.1.1'
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
 
+    def reactivestreams_version = "1.1.1"
+    implementation "android.arch.lifecycle:reactivestreams:$reactivestreams_version"
+
     def rxkotlin_version = '2.3.0'
     implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
 
@@ -72,6 +78,15 @@ dependencies {
 
     /**Co-routine library*/
 //    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.27.0-eap13"
+
+
+    // Rx Binding Library
+    def rxbinding_version = "3.0.0-alpha2"
+    implementation "com.jakewharton.rxbinding3:rxbinding:$rxbinding_version"
+
+    // Rx-Retrofit Call Adapter
+    def rxcalladapter_version = '2.5.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxcalladapter_version"
 
     /** Square libraries */
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

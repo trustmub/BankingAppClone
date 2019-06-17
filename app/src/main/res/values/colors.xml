@@ -8,5 +8,6 @@
     <color name="colorBlack">#232223</color>
     <color name="colorWhite">#fffefe</color>
     <color name="colorTransparent">#00fffefe</color>
+    <color name="colorLoadingCanvas">#4D0C0B0B</color>
 
 </resources>

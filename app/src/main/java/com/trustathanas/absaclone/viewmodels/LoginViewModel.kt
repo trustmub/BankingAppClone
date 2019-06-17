@@ -1,30 +1,25 @@
 package com.trustathanas.absaclone.viewmodels
 
 import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import com.trustathanas.absaclone.activities.auth.AuthResource
 import com.trustathanas.absaclone.models.Login
 import com.trustathanas.absaclone.models.LoginModel
-import com.trustathanas.absaclone.models.PasscodeModel
-import com.trustathanas.absaclone.repositories.LoginRepository
+import com.trustathanas.absaclone.models.Response
+import com.trustathanas.absaclone.repositories.AuthRepository
+import javax.inject.Inject
 
-class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
+class LoginViewModel @Inject constructor() : ViewModel() {
 
-    fun addUser(user: LoginModel) = repository.addUser(user)
+    @Inject
+    lateinit var repository: AuthRepository
 
-    fun getAllUsers() = repository.getAllUsers()
+    fun observerAuthState() = repository.observerAuthState()
 
-    fun accessCurrentUser() = repository.accessCurrentUser()
+    fun setObserverAuthState(state: LiveData<AuthResource<Response>>) = repository.setObserverAuthState(state)
 
-    fun login(login: Login) = repository.login(login)
+    fun loginUser(login: Login) = repository.loginUser(login)
 
+    fun manuallyAddUser(user: LoginModel) = repository.manuallyAddUser(user)
 
-
-    fun listenToPasscode(number: Int): LiveData<List<PasscodeModel>> {
-        val passcodeList = MutableLiveData<List<PasscodeModel>>()
-        var pass = mutableListOf<PasscodeModel>()
-        pass.add(PasscodeModel(number))
-        passcodeList.postValue(pass)
-        return passcodeList
-    }
 }
