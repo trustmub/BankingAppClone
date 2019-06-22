@@ -22,4 +22,6 @@
     <string name="welcome_text_three">Pay anyone, anytime, anywhere.</string>
     <string name="welcome_text_four">Buy airtime and prepaid data with a first step.</string>
     <string name="welcome_text_five">Verify transactions to protect your account from fraud.</string>
+    <string name="label_logout">Logout</string>
+    <string name="account"> Account</string>
 </resources>

@@ -19,7 +19,7 @@ data class User(@SerializedName("device")
 
 
 data class Customer(@SerializedName("account_number")
-                    val accountNumber: Int = 0,
+                    var accountNumber: Int = 0,
                     @SerializedName("account_type")
                     val accountType: String = "",
                     @SerializedName("full_name")
@@ -30,17 +30,10 @@ data class Customer(@SerializedName("account_number")
                     val email: String = "")
 
 
-class AuthResponse {
-
-    @SerializedName("response")
-    @Expose
-    var response: Response? = null
-
-    constructor(response: Response) {
-        this.response = response
-    }
-
-    constructor()
+data class AuthResponse(
+        @SerializedName("response")
+        @Expose
+        var response: Response?) {
 }
 
 

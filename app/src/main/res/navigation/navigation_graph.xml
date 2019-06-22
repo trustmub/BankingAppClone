@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/destination_home"
-        android:name="com.trustathanas.absaclone.activities.home.HomeFragment"
+        android:name="com.trustathanas.absaclone.activities.home.home.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
     <fragment

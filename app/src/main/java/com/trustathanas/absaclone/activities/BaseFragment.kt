@@ -1,13 +1,13 @@
 package com.trustathanas.absaclone.activities
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dagger.android.support.DaggerFragment
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : DaggerFragment() {
 
     protected abstract val logTag: String
     protected abstract fun getLayout(): Int

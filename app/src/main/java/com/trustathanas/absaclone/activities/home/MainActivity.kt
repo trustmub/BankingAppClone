@@ -1,33 +1,108 @@
 package com.trustathanas.absaclone.activities.home
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
+import android.location.LocationManager
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.AppCompatActivity
-import android.widget.Toolbar
+import android.view.Menu
+import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.trustathanas.absaclone.R
-import com.trustathanas.absaclone.activities.BaseActivity
+import com.trustathanas.absaclone.SessionManager
+import com.trustathanas.absaclone.activities.auth.AuthResource
+import com.trustathanas.absaclone.activities.auth.LoginActivity
+import com.trustathanas.absaclone.viewmodels.ViewModelProviderFactory
+import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : DaggerAppCompatActivity() {
 
-//    override val tag: String = "MainActivity"
-//    override fun getLayout(): Int = R.layout.activity_main
 
+    lateinit var viewmodel: MainViewModel
+
+    @Inject
+    lateinit var sessionManager: SessionManager
+
+    @Inject
+    lateinit var providerFactory: ViewModelProviderFactory
+
+
+    val tag: String = "MainActivity"
+    fun getLayout(): Int = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(getLayout())
 
         val toolbar = findViewById<android.support.v7.widget.Toolbar>(R.id.toolbar_main)
+        toolbar.title = ""
         setSupportActionBar(toolbar)
-
-//        setSupportActionBar(findViewById(R.id.mainToolBar))
 
         val navigation = Navigation.findNavController(this, R.id.nav_host_fragment)
         setupBottomNavMenu(navigation)
-        setupActionBar(navigation)
+//        setupActionBar(navigation)
+
+        init()
+        subscribeObservers()
+
+    }
+
+
+    private fun init() {
+        viewmodel = ViewModelProviders.of(this, providerFactory).get(MainViewModel::class.java)
+    }
+
+    private fun subscribeObservers() {
+
+        sessionManager.getAuthUser().observe(this, Observer { responseAuthResource ->
+            responseAuthResource?.let { authResource ->
+                when (authResource.status) {
+                    AuthResource.Status.AUTHENTICATED -> {
+                        println("BaseActivity: Authenticated")
+                    }
+                    AuthResource.Status.LOADING -> {
+                        println("BaseActivity: loading")
+                    }
+                    AuthResource.Status.ERROR -> {
+                        println("BaseActivity: Error")
+                    }
+                    AuthResource.Status.NOT_AUTHENTICATED -> {
+                        println("Logged Out")
+                        navigateToLogin()
+                    }
+                }
+
+            }
+        })
+    }
+
+    private fun navigateToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_home, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when (item?.itemId) {
+            R.id.menu_logout_item -> {
+                println("logout Clicked")
+                sessionManager.logout()
+//                viewmodel.logoutMain()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setupBottomNavMenu(navController: NavController) {
@@ -40,4 +115,5 @@ class MainActivity : AppCompatActivity() {
     private fun setupActionBar(navController: NavController) {
         NavigationUI.setupActionBarWithNavController(this, navController)
     }
+
 }

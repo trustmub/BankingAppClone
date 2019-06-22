@@ -4,7 +4,6 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.LiveDataReactiveStreams
 import com.trustathanas.absaclone.SessionManager
 import com.trustathanas.absaclone.activities.auth.AuthResource
-import com.trustathanas.absaclone.di.Auth.AuthScope
 import com.trustathanas.absaclone.models.*
 import com.trustathanas.absaclone.webservices.AuthService
 import io.reactivex.functions.Function
@@ -12,7 +11,6 @@ import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.ExecutorService
 import javax.inject.Inject
 
-@AuthScope
 class AuthRepository @Inject constructor(private val sessionManager: SessionManager,
                                          private val authApi: AuthService,
                                          private val executor: ExecutorService,
@@ -35,14 +33,15 @@ class AuthRepository @Inject constructor(private val sessionManager: SessionMana
         return LiveDataReactiveStreams.fromPublisher(
                 authApi.userLogin(login)
                         .onErrorReturn(Function<Throwable, AuthResponse> {
-                            val errorUser = AuthResponse()
-                            errorUser.response!!.user.userNumber = -1
+                            val errorUser = AuthResponse(null)
+//                            errorUser.response?.customer?.accountNumber = -1
+                            println("Error occurred with results $errorUser and $it")
                             errorUser
                         })
                         .map(Function<AuthResponse, AuthResource<Response>> { user ->
-                            if (user.response!!.user.userNumber.equals(-1)) {
-                                AuthResource.error("Could not authenticate", null)
-                            } else AuthResource.success(user.response)
+                                if (user.response?.user == null) {
+                                    return@Function AuthResource.error("Could not authenticate", null)
+                                } else return@Function AuthResource.authenticated(user.response)
                         })
                         .subscribeOn(Schedulers.io())
         )

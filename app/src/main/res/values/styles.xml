@@ -16,8 +16,23 @@
         <item name="android:fontFamily">@font/roboto</item>
     </style>
 
+
+
     <style name="CustomNumberPadButton.background">
         <item name="android:background">@drawable/button_custom_number_pad</item>
+    </style>
+
+
+    <style name="CardViewHome.background" parent="CardView">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="CardViewHome">
+        <item name="android:background">@drawable/card_background_style</item>
     </style>
 
     <style name="CustomProgressBar" parent="android:Widget.ProgressBar">

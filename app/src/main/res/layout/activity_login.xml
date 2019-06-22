@@ -91,7 +91,7 @@
         <Button
             android:id="@+id/btn_forgot_password"
             style="@style/CustomNumberPadButton.background.blank"
-            android:onClick="onResetPasscodeClicked"
+            android:onClick="onResetPassCodeClicked"
             android:text="@string/label_reset_passcode"
             app:layout_constraintBottom_toBottomOf="@+id/btn_zero"
             app:layout_constraintEnd_toStartOf="@+id/btn_zero"

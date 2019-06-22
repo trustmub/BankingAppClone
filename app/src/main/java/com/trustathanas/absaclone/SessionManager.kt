@@ -13,7 +13,6 @@ import javax.inject.Singleton
 class SessionManager @Inject constructor() {
 
     private val cachedUser: MediatorLiveData<AuthResource<Response>> = MediatorLiveData()
-    private val cachedCustomer: MediatorLiveData<AuthResource<Customer>> = MediatorLiveData()
 
     fun authenticate(source: LiveData<AuthResource<Response>>) {
         if (cachedUser != null) {
@@ -25,7 +24,13 @@ class SessionManager @Inject constructor() {
         }
     }
 
+    fun logout() {
+        println("Session Manager logout changed")
+        cachedUser.setValue(AuthResource.logout<Response>())
+    }
+
     fun getAuthUser(): LiveData<AuthResource<Response>> {
+        println("Cached User Changes ${cachedUser}")
         return cachedUser
     }
 }

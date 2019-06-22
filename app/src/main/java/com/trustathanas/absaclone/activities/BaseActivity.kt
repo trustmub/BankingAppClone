@@ -1,19 +1,59 @@
 package com.trustathanas.absaclone.activities
 
+import android.arch.lifecycle.Observer
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.v4.app.FragmentActivity
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.trustathanas.absaclone.SessionManager
+import com.trustathanas.absaclone.activities.auth.AuthResource
+import com.trustathanas.absaclone.activities.auth.LoginActivity
+import javax.inject.Inject
 
-abstract class BaseActivity : FragmentActivity() {
+
+abstract class BaseActivity : AppCompatActivity() {
 
     protected abstract val tag: String
     protected abstract fun getLayout(): Int
 
+    @Inject
+    lateinit var sessionManager: SessionManager
+
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-        Log.v(tag, "[On Create]")
+        Log.v(tag, "BaseActivity: [On Create]")
+        subscribeObservers()
+    }
+
+    private fun subscribeObservers() {
+        sessionManager.getAuthUser().observe(this@BaseActivity, Observer { responseAuthResource ->
+            responseAuthResource?.let { authResource ->
+                when (authResource.status) {
+                    AuthResource.Status.AUTHENTICATED -> {
+                        println("BaseActivity: Authenticated")
+                    }
+                    AuthResource.Status.LOADING -> {
+                        println("BaseActivity: loading")
+                    }
+                    AuthResource.Status.ERROR -> {
+                        println("BaseActivity: Error")
+                    }
+                    AuthResource.Status.NOT_AUTHENTICATED -> {
+                        println("Logged Out")
+                        navigateToLogin()
+                    }
+                }
+
+            }
+        })
+    }
+
+    private fun navigateToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+
     }
 
     override fun onStart() {

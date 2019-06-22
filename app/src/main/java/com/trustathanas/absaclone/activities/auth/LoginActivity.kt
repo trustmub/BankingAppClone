@@ -27,8 +27,11 @@ import javax.inject.Inject
 
 class LoginActivity : DaggerAppCompatActivity() {
 
-    @Inject lateinit var providerFactory: ViewModelProviderFactory
-    @Inject lateinit var sessionManager: SessionManager
+    @Inject
+    lateinit var providerFactory: ViewModelProviderFactory
+
+    @Inject
+    lateinit var sessionManager: SessionManager
 
 
 //    var disposables = CompositeDisposable()
@@ -61,24 +64,23 @@ class LoginActivity : DaggerAppCompatActivity() {
                     AuthResource.Status.LOADING -> {
                         showProgressBar(true)
                     }
-                    AuthResource.Status.SUCCESS -> {
+                    AuthResource.Status.AUTHENTICATED -> {
                         showProgressBar(false)
                         resetMarker()
                         startActivity(Intent(this, MainActivity::class.java))
                         // set the session values and navigate to the home page
                     }
                     AuthResource.Status.ERROR -> {
+                        println("could not Error ${userAuthResource.data}")
                         resetMarker()
                         showProgressBar(false)
                         // show dialog of failed login
                     }
+                    AuthResource.Status.NOT_AUTHENTICATED -> {
+                        println("could not authenticate")
+                        showProgressBar(false)
+                    }
                 }
-            }
-        })
-
-        sessionManager.getAuthUser().observe(this, Observer {
-            it?.let {
-                println("User details are ${it.data?.customer}")
             }
         })
 
@@ -180,6 +182,11 @@ class LoginActivity : DaggerAppCompatActivity() {
         fragment.show(transaction, "dialog")
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
+    }
+
     private fun dismissDialog() {
         val transaction = supportFragmentManager.beginTransaction()
         val previouseDialog = supportFragmentManager.findFragmentByTag("dialog")
@@ -214,7 +221,7 @@ class LoginActivity : DaggerAppCompatActivity() {
 
     /** Click functions for loginActivity */
 
-    fun onResetPasscodeClicked(view: View) {
+    fun onResetPassCodeClicked(view: View) {
         val resetIntent = Intent(this, RestPasscodeActivity::class.java)
         startActivity(resetIntent)
     }

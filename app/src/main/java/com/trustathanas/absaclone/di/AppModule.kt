@@ -2,6 +2,12 @@ package com.trustathanas.absaclone.di
 
 import android.app.Application
 import android.arch.persistence.room.Room
+import android.graphics.drawable.Drawable
+import android.support.v4.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
+import com.bumptech.glide.request.RequestOptions
+import com.trustathanas.absaclone.R
 import com.trustathanas.absaclone.models.Room.AppDatabase
 import com.trustathanas.absaclone.utilities.Constants
 import dagger.Module
@@ -45,6 +51,30 @@ object AppModule {
     @JvmStatic
     internal fun provideDatabaseInstance(context: Application): AppDatabase {
         return Room.databaseBuilder(context, AppDatabase::class.java, "application_db").build()
+    }
+
+    @Singleton
+    @Provides
+    @JvmStatic
+    internal fun providesRequestOptions(): RequestOptions {
+        return RequestOptions
+                .placeholderOf(R.drawable.ic_account_circle_black_24dp)
+                .error(R.drawable.ic_account_circle_black_24dp)
+    }
+
+    @Singleton
+    @Provides
+    @JvmStatic
+    internal fun providesGlideInstance(application: Application, requestOptions: RequestOptions): RequestManager {
+        return Glide.with(application)
+                .setDefaultRequestOptions(requestOptions)
+    }
+
+    @Singleton
+    @Provides
+    @JvmStatic
+    internal fun provideAppDrawable(application: Application): Drawable {
+        return ContextCompat.getDrawable(application, R.drawable.ic_account_circle_black_24dp) as Drawable
     }
 
 
