@@ -1,4 +1,4 @@
-package com.trustathanas.absaclone.activities.home
+package com.trustathanas.absaclone.activities.home.message
 
 
 import android.os.Bundle

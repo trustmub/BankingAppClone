@@ -21,4 +21,5 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getTargetContext()
         assertEquals("com.trustathanas.absaclone", appContext.packageName)
     }
+
 }

@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.trustathanas.absaclone.R
 import kotlinx.android.synthetic.main.activity_rest_passcode.*
 
-class RestPasscodeActivity : AppCompatActivity() {
+class ResetPasscodeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

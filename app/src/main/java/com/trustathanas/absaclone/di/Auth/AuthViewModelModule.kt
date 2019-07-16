@@ -2,7 +2,7 @@ package com.trustathanas.absaclone.di.Auth
 
 import android.arch.lifecycle.ViewModel
 import com.trustathanas.absaclone.di.ViewModelKey
-import com.trustathanas.absaclone.viewmodels.LoginViewModel
+import com.trustathanas.absaclone.activities.auth.LoginViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

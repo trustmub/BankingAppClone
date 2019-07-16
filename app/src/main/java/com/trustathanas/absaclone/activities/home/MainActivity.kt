@@ -75,7 +75,6 @@ open class MainActivity : DaggerAppCompatActivity() {
                         navigateToLogin()
                     }
                 }
-
             }
         })
     }
@@ -114,6 +113,10 @@ open class MainActivity : DaggerAppCompatActivity() {
 
     private fun setupActionBar(navController: NavController) {
         NavigationUI.setupActionBarWithNavController(this, navController)
+    }
+
+    override fun onBackPressed() {
+        return;
     }
 
 }

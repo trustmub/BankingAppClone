@@ -1,8 +1,8 @@
 package com.trustathanas.absaclone.di.home
 
 import com.trustathanas.absaclone.activities.home.home.HomeFragment
-import com.trustathanas.absaclone.activities.home.MessageFragment
-import com.trustathanas.absaclone.activities.home.MoreFragment
+import com.trustathanas.absaclone.activities.home.message.MessageFragment
+import com.trustathanas.absaclone.activities.home.more.MoreFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

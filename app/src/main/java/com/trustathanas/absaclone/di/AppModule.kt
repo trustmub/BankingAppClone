@@ -10,6 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.trustathanas.absaclone.R
 import com.trustathanas.absaclone.models.Room.AppDatabase
 import com.trustathanas.absaclone.utilities.Constants
+import com.trustathanas.absaclone.utilities.Constants.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -45,12 +46,11 @@ object AppModule {
                 .build()
     }
 
-
     @Singleton
     @Provides
     @JvmStatic
     internal fun provideDatabaseInstance(context: Application): AppDatabase {
-        return Room.databaseBuilder(context, AppDatabase::class.java, "application_db").build()
+        return Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME).build()
     }
 
     @Singleton

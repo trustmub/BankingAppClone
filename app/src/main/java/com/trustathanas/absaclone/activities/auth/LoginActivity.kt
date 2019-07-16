@@ -15,10 +15,10 @@ import com.trustathanas.absaclone.SessionManager
 import com.trustathanas.absaclone.activities.TermsActivity
 import com.trustathanas.absaclone.activities.contactus.ContactsActivity
 import com.trustathanas.absaclone.activities.home.MainActivity
-import com.trustathanas.absaclone.activities.resetaccount.RestPasscodeActivity
+import com.trustathanas.absaclone.activities.resetaccount.ResetPasscodeActivity
 import com.trustathanas.absaclone.models.Login
 import com.trustathanas.absaclone.models.LoginModel
-import com.trustathanas.absaclone.viewmodels.LoginViewModel
+import com.trustathanas.absaclone.models.Response
 import com.trustathanas.absaclone.viewmodels.ViewModelProviderFactory
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -32,9 +32,6 @@ class LoginActivity : DaggerAppCompatActivity() {
 
     @Inject
     lateinit var sessionManager: SessionManager
-
-
-//    var disposables = CompositeDisposable()
 
 
     val tag: String = "LoginActivity"
@@ -67,6 +64,7 @@ class LoginActivity : DaggerAppCompatActivity() {
                     AuthResource.Status.AUTHENTICATED -> {
                         showProgressBar(false)
                         resetMarker()
+                        persistUserDetailsPreferences(userResource.data)
                         startActivity(Intent(this, MainActivity::class.java))
                         // set the session values and navigate to the home page
                     }
@@ -89,6 +87,13 @@ class LoginActivity : DaggerAppCompatActivity() {
                 if (it.size == 5) attemptLogin()
             }
         })
+    }
+
+    private fun persistUserDetailsPreferences(data: Response?) {
+        data?.let {response ->
+            loginViewModel.setLoggedInUserDetails(email=response.customer.email,
+                    fullName = response.customer.fullName)
+        }
     }
 
     private fun showProgressBar(status: Boolean) {
@@ -124,9 +129,9 @@ class LoginActivity : DaggerAppCompatActivity() {
 
     private fun setDefaultUser() {
         loginViewModel.manuallyAddUser(LoginModel(username = "trustmub@gmail.com", fullname = "Trust Mubaiwa", passCode = 12345))
-        App.prefes.username = "trustmub@gmail.com"
-        App.prefes.fullname = "Trust Mubaiwa"
-        App.prefes.passCode = 12345
+        if (App.prefes.username.isNullOrEmpty()) App.prefes.username = "trustmub@gmail.com"
+        if (App.prefes.fullname.isNullOrEmpty()) App.prefes.fullname = "Trust Mubaiwa"
+        if (App.prefes.passCode.equals(null)) App.prefes.passCode = 12345
     }
 
 
@@ -222,7 +227,7 @@ class LoginActivity : DaggerAppCompatActivity() {
     /** Click functions for loginActivity */
 
     fun onResetPassCodeClicked(view: View) {
-        val resetIntent = Intent(this, RestPasscodeActivity::class.java)
+        val resetIntent = Intent(this, ResetPasscodeActivity::class.java)
         startActivity(resetIntent)
     }
 
@@ -236,5 +241,8 @@ class LoginActivity : DaggerAppCompatActivity() {
         startActivity(contactsIntent)
     }
 
-    /*************************************/
+    override fun onDestroy() {
+        super.onDestroy()
+        passcodeLiveData.removeObservers(this)
+    }
 }

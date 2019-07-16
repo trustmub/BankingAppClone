@@ -24,4 +24,8 @@
     <string name="welcome_text_five">Verify transactions to protect your account from fraud.</string>
     <string name="label_logout">Logout</string>
     <string name="account"> Account</string>
+    <string name="contact_us_label">Contact Us</string>
+    <string name="available_balance_label">Available Balance</string>
+    <string name="zar_currency_code">R</string>
+    <string name="accounts_section_label">Accounts</string>
 </resources>

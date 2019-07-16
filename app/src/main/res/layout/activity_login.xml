@@ -108,7 +108,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:onClick="onContactUsClicked"
-            android:text="Contact Us"
+            android:text="@string/contact_us_label"
             app:layout_constraintBottom_toBottomOf="@+id/tv_login_user_label"
             app:layout_constraintEnd_toStartOf="@+id/tv_login_user_label"
             app:layout_constraintHorizontal_bias="0.5"
@@ -121,13 +121,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="John Doe"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/tv_other_users"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/tv_contact_us"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="John Doe" />
 
         <TextView
             android:id="@+id/tv_other_users"

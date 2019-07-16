@@ -12,12 +12,12 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/destination_messages"
-        android:name="com.trustathanas.absaclone.activities.home.MessageFragment"
+        android:name="com.trustathanas.absaclone.activities.home.message.MessageFragment"
         android:label="Messages"
         tools:layout="@layout/fragment_message" />
     <fragment
         android:id="@+id/destination_more"
-        android:name="com.trustathanas.absaclone.activities.home.MoreFragment"
+        android:name="com.trustathanas.absaclone.activities.home.more.MoreFragment"
         android:label="More"
         tools:layout="@layout/fragment_more" />
 </navigation>

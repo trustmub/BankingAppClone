@@ -23,7 +23,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".activities.resetaccount.RestPasscodeActivity" />
+        <activity android:name=".activities.resetaccount.ResetPasscodeActivity" />
         <activity android:name=".activities.TermsActivity" />
         <activity android:name=".activities.contactus.ContactsActivity" />
         <activity android:name=".activities.resetaccount.PasscodeLockedActivity" />
