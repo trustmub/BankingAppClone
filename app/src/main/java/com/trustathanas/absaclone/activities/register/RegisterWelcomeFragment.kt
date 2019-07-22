@@ -1,7 +1,7 @@
 package com.trustathanas.absaclone.activities.register
 
 import android.os.Bundle
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +22,7 @@ class RegisterWelcomeFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(getLayout(), container, false)
 
-        val viewPager = view.findViewById<ViewPager>(R.id.view_pager_welcome)
+        val viewPager = view.findViewById<androidx.viewpager.widget.ViewPager>(R.id.view_pager_welcome)
         viewPager.adapter = ViewPagerAdapter(activity!!.supportFragmentManager!!)
 
         val mRegisterButton = view.findViewById<Button>(R.id.btn_register_for_digital)

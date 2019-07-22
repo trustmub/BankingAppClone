@@ -1,7 +1,7 @@
 package com.trustathanas.absaclone.repositories
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.trustathanas.absaclone.App
 import com.trustathanas.absaclone.models.*
 import retrofit2.Call

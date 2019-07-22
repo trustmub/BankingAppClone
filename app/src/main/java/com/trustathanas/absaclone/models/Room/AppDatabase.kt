@@ -1,7 +1,7 @@
 package com.trustathanas.absaclone.models.Room
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.Database
+import androidx.room.RoomDatabase
 import com.trustathanas.absaclone.models.LoginDao
 import com.trustathanas.absaclone.models.LoginModel
 

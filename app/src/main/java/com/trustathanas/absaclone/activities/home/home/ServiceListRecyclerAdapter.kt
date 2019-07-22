@@ -1,15 +1,15 @@
 package com.trustathanas.absaclone.activities.home.home
 
 import android.graphics.drawable.Drawable
-import android.support.design.widget.FloatingActionButton
-import android.support.v7.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.trustathanas.absaclone.R
 
-class ServiceListRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ServiceListRecyclerAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
 
     val serviceList: List<String> = listOf<String>("Pay", "Transfer", "CashSend", "Buy Airtime", "Buy Electricity")
     val serviceIcons: List<Int> = listOf<Int>(
@@ -20,7 +20,7 @@ class ServiceListRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
             R.drawable.ic_buy_electricity_24dp
     )
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_service_list_item, parent, false)
         return ServiceViewHolder(view)
     }
@@ -29,11 +29,11 @@ class ServiceListRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
         return serviceList.size
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         (holder as ServiceViewHolder).bind(serviceList.get(position), serviceIcons.get(position))
     }
 
-    inner class ServiceViewHolder(val itemview: View) : RecyclerView.ViewHolder(itemview) {
+    inner class ServiceViewHolder(val itemview: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemview) {
         var title: TextView = itemview.findViewById(R.id.tv_service_title)
         var fabImage: FloatingActionButton = itemview.findViewById(R.id.fab_service_item)
 

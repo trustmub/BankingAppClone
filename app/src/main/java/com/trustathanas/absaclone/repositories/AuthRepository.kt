@@ -1,7 +1,7 @@
 package com.trustathanas.absaclone.repositories
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.LiveDataReactiveStreams
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.LiveDataReactiveStreams
 import com.trustathanas.absaclone.SessionManager
 import com.trustathanas.absaclone.activities.auth.AuthResource
 import com.trustathanas.absaclone.models.*

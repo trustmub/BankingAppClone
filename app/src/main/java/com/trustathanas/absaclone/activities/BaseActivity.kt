@@ -1,10 +1,10 @@
 package com.trustathanas.absaclone.activities
 
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.Observer
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import com.trustathanas.absaclone.SessionManager
 import com.trustathanas.absaclone.activities.auth.AuthResource

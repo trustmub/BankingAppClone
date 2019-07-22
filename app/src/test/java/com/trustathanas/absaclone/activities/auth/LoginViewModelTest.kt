@@ -1,7 +1,7 @@
 package com.trustathanas.absaclone.activities.auth
 
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import android.os.Build
 import com.trustathanas.absaclone.App
 import com.trustathanas.absaclone.models.Login

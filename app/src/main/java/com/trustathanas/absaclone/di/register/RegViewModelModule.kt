@@ -1,6 +1,6 @@
 package com.trustathanas.absaclone.di.register
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import com.trustathanas.absaclone.activities.register.RegViewModel
 import com.trustathanas.absaclone.di.ViewModelKey
 import dagger.Binds

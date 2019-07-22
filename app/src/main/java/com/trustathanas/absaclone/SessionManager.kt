@@ -1,7 +1,7 @@
 package com.trustathanas.absaclone
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MediatorLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import com.trustathanas.absaclone.activities.auth.AuthResource
 import com.trustathanas.absaclone.models.Customer
 import com.trustathanas.absaclone.models.Response

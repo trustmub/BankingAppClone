@@ -1,13 +1,13 @@
 package com.trustathanas.absaclone.activities.dialogs
 
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
+import androidx.fragment.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.trustathanas.absaclone.R
 
-class WrongPasscodeDialogFragment : DialogFragment() {
+class WrongPasscodeDialogFragment : androidx.fragment.app.DialogFragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

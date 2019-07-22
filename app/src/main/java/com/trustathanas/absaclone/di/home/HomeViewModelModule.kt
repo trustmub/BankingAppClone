@@ -1,6 +1,6 @@
 package com.trustathanas.absaclone.di.home
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import com.trustathanas.absaclone.activities.home.home.HomeViewModel
 import com.trustathanas.absaclone.activities.home.MainViewModel
 import com.trustathanas.absaclone.di.ViewModelKey

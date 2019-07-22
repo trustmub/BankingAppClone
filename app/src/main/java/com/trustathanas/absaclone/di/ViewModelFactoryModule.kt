@@ -1,6 +1,6 @@
 package com.trustathanas.absaclone.di
 
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider
 import com.trustathanas.absaclone.viewmodels.ViewModelProviderFactory
 import dagger.Binds
 import dagger.Module

@@ -1,11 +1,11 @@
 package com.trustathanas.absaclone.activities.home
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.location.LocationManager
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.NavController
@@ -38,7 +38,7 @@ open class MainActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(getLayout())
 
-        val toolbar = findViewById<android.support.v7.widget.Toolbar>(R.id.toolbar_main)
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar_main)
         toolbar.title = ""
         setSupportActionBar(toolbar)
 

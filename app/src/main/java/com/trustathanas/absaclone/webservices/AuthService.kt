@@ -1,6 +1,6 @@
 package com.trustathanas.absaclone.webservices
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.trustathanas.absaclone.models.*
 import com.trustathanas.absaclone.models.account_services.AccountServices
 import io.reactivex.Flowable

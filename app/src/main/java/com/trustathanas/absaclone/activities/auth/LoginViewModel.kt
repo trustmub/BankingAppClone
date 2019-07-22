@@ -1,8 +1,8 @@
 package com.trustathanas.absaclone.activities.auth
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.trustathanas.absaclone.App
 import com.trustathanas.absaclone.models.Login
 import com.trustathanas.absaclone.models.LoginModel

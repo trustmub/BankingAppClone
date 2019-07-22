@@ -1,13 +1,13 @@
 package com.trustathanas.absaclone.activities.auth
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
-import android.support.v4.content.ContextCompat
+import androidx.fragment.app.DialogFragment
+import androidx.core.content.ContextCompat
 import android.view.View
 import com.trustathanas.absaclone.App
 import com.trustathanas.absaclone.R
@@ -179,7 +179,7 @@ class LoginActivity : DaggerAppCompatActivity() {
 
 
     @SuppressLint("CommitTransaction")
-    private fun showDialog(fragment: DialogFragment) {
+    private fun showDialog(fragment: androidx.fragment.app.DialogFragment) {
         val transaction = supportFragmentManager.beginTransaction()
 
         val previouseDialog = supportFragmentManager.findFragmentByTag("dialog")

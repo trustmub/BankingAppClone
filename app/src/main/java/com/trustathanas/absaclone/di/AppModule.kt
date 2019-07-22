@@ -1,9 +1,9 @@
 package com.trustathanas.absaclone.di
 
 import android.app.Application
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import android.graphics.drawable.Drawable
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions

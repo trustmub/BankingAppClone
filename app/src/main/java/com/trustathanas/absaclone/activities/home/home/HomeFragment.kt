@@ -1,18 +1,16 @@
 package com.trustathanas.absaclone.activities.home.home
 
 
-import android.annotation.SuppressLint
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.android.databinding.library.baseAdapters.BR.viewModelData
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.databinding.library.baseAdapters.BR.viewModelData
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.RequestManager
 import com.trustathanas.absaclone.R
 import com.trustathanas.absaclone.activities.BaseFragment
@@ -43,7 +41,7 @@ class HomeFragment : BaseFragment() {
     lateinit var adapter: ServiceListRecyclerAdapter
 
     lateinit var viewModel: HomeViewModel
-    lateinit var serviceListRecyclerView: RecyclerView
+    lateinit var serviceListRecyclerView: androidx.recyclerview.widget.RecyclerView
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -64,12 +62,13 @@ class HomeFragment : BaseFragment() {
         this.setViewValues()
     }
 
+
     private fun setViewValues() {
         tv_card_account_type.text = viewModel.accountType.value + " " + getString(R.string.account)
     }
 
     private fun setRecyclerView() {
-        serviceListRecyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        serviceListRecyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity, androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL, false)
         serviceListRecyclerView.adapter = adapter
     }
 
