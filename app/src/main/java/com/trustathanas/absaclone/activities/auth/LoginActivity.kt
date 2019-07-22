@@ -64,7 +64,6 @@ class LoginActivity : DaggerAppCompatActivity() {
                     AuthResource.Status.AUTHENTICATED -> {
                         showProgressBar(false)
                         resetMarker()
-                        persistUserDetailsPreferences(userResource.data)
                         startActivity(Intent(this, MainActivity::class.java))
                         // set the session values and navigate to the home page
                     }
@@ -227,7 +226,7 @@ class LoginActivity : DaggerAppCompatActivity() {
     /** Click functions for loginActivity */
 
     fun onResetPassCodeClicked(view: View) {
-        val resetIntent = Intent(this, ResetPasscodeActivity::class.java)
+        val resetIntent = Intent(this, RestPasscodeActivity::class.java)
         startActivity(resetIntent)
     }
 
@@ -244,5 +243,9 @@ class LoginActivity : DaggerAppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         passcodeLiveData.removeObservers(this)
+    }
+
+    fun onRetryClicked(view: View) {
+        println("onClick happened from class")
     }
 }

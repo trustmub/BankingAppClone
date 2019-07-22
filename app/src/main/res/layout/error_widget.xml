@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/errorWidgetIconImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_padding_2x"
+        app:layout_constraintBottom_toTopOf="@id/errorWidgetMessageTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/errorWidgetMessageTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/white_label_dark_grey_color"
+        android:textSize="@dimen/sbg_large_font"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="We have experienced an unexpected error" />
+
+    <Button
+        android:id="@+id/errorWidgetRetryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_padding_2x"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@color/white_label_tertiary_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/errorWidgetMessageTextView"
+        tools:text="Try again" />
+
+    <TextView
+        android:id="@+id/errorWidgetFooterTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="phone"
+        android:drawablePadding="@dimen/error_widget_need_help_icon_padding"
+        android:gravity="center_horizontal"
+        android:textColor="@color/white_label_medium_grey_color"
+        android:textColorLink="@color/white_label_tertiary_color"
+        android:textSize="@dimen/sbg_large_font"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:drawableStart="@drawable/ic_phone_white_24_px"
+        tools:text="Need help? 0860 000 000" />
+
+</android.support.constraint.ConstraintLayout>
