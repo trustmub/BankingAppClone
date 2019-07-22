@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,10 +8,26 @@
     tools:context=".activities.auth.LoginActivity"
     tools:layout_editor_absoluteY="25dp">
 
+    <com.trustathanas.absaclone.common.widgets.ErrorWidget
+        android:id="@+id/LoadingError"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        app:button_text="Try Again"
+        app:footer_text="An Error occurred"
+        app:footer_visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:message="Failed to Load"
+        app:onClickRetry="@{() -> viewmodel.reload}" />
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/main_login_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:visibility="invisible">
 
         <View
             android:id="@+id/v_one"

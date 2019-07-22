@@ -22,4 +22,8 @@ class LoginViewModel @Inject constructor() : ViewModel() {
 
     fun manuallyAddUser(user: LoginModel) = repository.manuallyAddUser(user)
 
+    fun reload() {
+        println("Reload view model clicked")
+    }
+
 }

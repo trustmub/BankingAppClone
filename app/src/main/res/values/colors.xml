@@ -10,4 +10,19 @@
     <color name="colorTransparent">#00fffefe</color>
     <color name="colorLoadingCanvas">#4D0C0B0B</color>
 
+
+    <color name="white_label_tertiary_color">@color/palette_secondary_color</color>
+    <color name="palette_secondary_color">#00aadd</color>
+
+    <color name="white_label_medium_grey_color">@color/palette_font_medium_grey</color>
+    <color name="palette_font_medium_grey">#444444</color>
+
+    <color name="white_label_dark_grey_color">@color/palette_font_dark_grey</color>
+    <color name="palette_font_dark_grey">#222222</color>
+
+
+
+
+
+
 </resources>

@@ -34,11 +34,8 @@ class LoginActivity : DaggerAppCompatActivity() {
     lateinit var sessionManager: SessionManager
 
 
-//    var disposables = CompositeDisposable()
-
-
     val tag: String = "LoginActivity"
-    fun getLayout(): Int = com.trustathanas.absaclone.R.layout.activity_login
+    fun getLayout(): Int = R.layout.activity_login
 
     private lateinit var loginViewModel: LoginViewModel
 
@@ -234,6 +231,10 @@ class LoginActivity : DaggerAppCompatActivity() {
     fun onContactUsClicked(view: View) {
         val contactsIntent = Intent(this, ContactsActivity::class.java)
         startActivity(contactsIntent)
+    }
+
+    fun onRetryClicked(view: View) {
+        println("onClick happened from class")
     }
 
     /*************************************/

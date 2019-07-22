@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="btn_radius">3dp</dimen>
+    <dimen name="btn_border_radius">2dp</dimen>
+    <dimen name="default_padding">8dp</dimen>
+    <dimen name="default_padding_2x">16dp</dimen>
+    <dimen name="default_padding_3x">24dp</dimen>
+    <dimen name="rounded_corner_bg_width">3dp</dimen>
+    <dimen name="rounded_corner_bg_radius">10dp</dimen>
+    <dimen name="margin_tooltip">16dp</dimen>
+    <dimen name="tooltip_text_size">14sp</dimen>
+    <dimen name="tooltip_nav_layout_width">25dp</dimen>
+    <dimen name="tooltip_nav_layout_length">25dp</dimen>
+    <dimen name="tooltip_nav_margin_start">32dp</dimen>
+    <dimen name="tooltip_bg_radius">2dp</dimen>
+    <dimen name="tooltip_arrow_width">2dp</dimen>
+    <dimen name="tooltip_bg_width">2dp</dimen>
+    <dimen name="search_view_background_radius">2dp</dimen>
+    <dimen name="tab_indicator_height">3dp</dimen>
+    <dimen name="tile_height">188dp</dimen>
+    <dimen name="tile_list_divider_height">8dp</dimen>
+    <dimen name="tile_padding_right">48dp</dimen>
+    <dimen name="tile_title_text_size">18sp</dimen>
+    <dimen name="tile_title_padding">10dp</dimen>
+    <dimen name="sbg_large_font">16sp</dimen>
+    <dimen name="error_widget_need_help_icon_padding">6dp</dimen>
+</resources>
