@@ -1,12 +1,11 @@
 package com.trustathanas.absaclone.common.widgets
 
 import android.content.Context
-import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.DrawableRes
-import com.jakewharton.rxbinding3.view.clicks
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.trustathanas.absaclone.R
 import kotlinx.android.synthetic.main.error_widget.view.*
 

@@ -9,6 +9,7 @@ import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.core.content.ContextCompat
 import android.view.View
+import androidx.databinding.DataBindingUtil
 import com.trustathanas.absaclone.App
 import com.trustathanas.absaclone.R
 import com.trustathanas.absaclone.SessionManager
@@ -33,9 +34,11 @@ class LoginActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var sessionManager: SessionManager
 
+    private lateinit var binding: LoginActivityBinding
+
 
     val tag: String = "LoginActivity"
-    fun getLayout(): Int = com.trustathanas.absaclone.R.layout.activity_login
+    fun getLayout(): Int = R.layout.activity_login
 
     private lateinit var loginViewModel: LoginViewModel
 
@@ -44,7 +47,8 @@ class LoginActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayout())
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+//        setContentView(getLayout())
         this.init()
         this.subscribeObservers()
         listenToClicks()
@@ -86,13 +90,6 @@ class LoginActivity : DaggerAppCompatActivity() {
                 if (it.size == 5) attemptLogin()
             }
         })
-    }
-
-    private fun persistUserDetailsPreferences(data: Response?) {
-        data?.let {response ->
-            loginViewModel.setLoggedInUserDetails(email=response.customer.email,
-                    fullName = response.customer.fullName)
-        }
     }
 
     private fun showProgressBar(status: Boolean) {
@@ -226,7 +223,7 @@ class LoginActivity : DaggerAppCompatActivity() {
     /** Click functions for loginActivity */
 
     fun onResetPassCodeClicked(view: View) {
-        val resetIntent = Intent(this, RestPasscodeActivity::class.java)
+        val resetIntent = Intent(this, ResetPasscodeActivity::class.java)
         startActivity(resetIntent)
     }
 
@@ -243,9 +240,5 @@ class LoginActivity : DaggerAppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         passcodeLiveData.removeObservers(this)
-    }
-
-    fun onRetryClicked(view: View) {
-        println("onClick happened from class")
     }
 }

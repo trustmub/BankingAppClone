@@ -1,7 +1,8 @@
 package com.trustathanas.absaclone.viewmodels
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.trustathanas.absaclone.activities.auth.AuthResource
 import com.trustathanas.absaclone.models.Login
 import com.trustathanas.absaclone.models.LoginModel
@@ -13,6 +14,10 @@ class LoginViewModel @Inject constructor() : ViewModel() {
 
     @Inject
     lateinit var repository: AuthRepository
+
+    private val _triesError: MutableLiveData<String> = MutableLiveData()
+    val exceedTriesMessage: LiveData<String> = _triesError
+
 
     fun observerAuthState() = repository.observerAuthState()
 
