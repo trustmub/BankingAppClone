@@ -24,16 +24,16 @@ import org.robolectric.shadows.ShadowIntent
 
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [Build.VERSION_CODES.O_MR1], packageName = "com.trustathanas.absaclone")
-class LoginActivityTest {
+class ActivityLoginTest {
 
-    private lateinit var loginActivity: LoginActivity
+    private lateinit var activityLogin: ActivityLogin
 
     private lateinit var resetPassCodeActivity: ResetPasscodeActivity
     private lateinit var termsActivity: TermsActivity
 
     @Before
     fun setUp() {
-        loginActivity = Robolectric.setupActivity(LoginActivity::class.java)
+        activityLogin = Robolectric.setupActivity(ActivityLogin::class.java)
 
         resetPassCodeActivity = Robolectric.buildActivity(ResetPasscodeActivity::class.java).get()
         termsActivity = Robolectric.buildActivity(TermsActivity::class.java).get()
@@ -42,7 +42,7 @@ class LoginActivityTest {
 
     @Test
     fun `check if clicking reset button takes you to reset activity`() {
-        val button = loginActivity.findViewById<Button>(R.id.btn_forgot_password)
+        val button = activityLogin.findViewById<Button>(R.id.btn_forgot_password)
         // assert not null
         assertNotNull(button)
         // perform click
@@ -56,7 +56,7 @@ class LoginActivityTest {
 
     @Test
     fun `check if clicking on terms and condition takes you to terms activity`() {
-        val button = loginActivity.findViewById<TextView>(R.id.tv_login_ts_and_cs)
+        val button = activityLogin.findViewById<TextView>(R.id.tv_login_ts_and_cs)
         assertNotNull(button)
 
         button.performClick()

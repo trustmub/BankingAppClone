@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.common.base.Verify.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.trustathanas.absaclone.R
 import kotlinx.android.synthetic.main.error_widget.view.*
@@ -181,23 +182,7 @@ internal class ErrorWidgetTest {
     }
 
     @Test
-    fun `check if button has same ID`() {
-        var invoked = false
-        val clickEvent = { invoked = true }
-        `when`<Button>(mockView.errorWidgetRetryButton).thenReturn(mockErrorRetryButton)
-
-        val retryButton = mockView.findViewById<Button>(R.id.errorWidgetRetryButton)
-        assertThat(mockErrorRetryButton, `is`(retryButton))
-        errorWidget = ErrorWidget(spyContext, null, 0)
-        assertThat(mockErrorRetryButton, `is`(retryButton))
-        errorWidget.setButtonClickListener(clickEvent)
-        val hasOnClickListener = retryButton.hasOnClickListeners()
-        assertThat(retryButton.hasOnClickListeners(), `is`(true))
-
-    }
-
-    @Test
-    fun setButtonClickListener_should_execute_function_param_on_click() {
+    fun setButtonClickListener_should_have_on_click_listener() {
         `when`<Button>(mockView.errorWidgetRetryButton).thenReturn(mockErrorRetryButton)
         var invoked = false
         val invokedFunc = { invoked = true }

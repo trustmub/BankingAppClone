@@ -13,23 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.auth.LoginActivity"
+        tools:context=".activities.auth.ActivityLogin"
         tools:layout_editor_absoluteY="25dp">
-
-        <com.trustathanas.absaclone.common.widgets.ErrorWidget
-            android:id="@+id/LoadingError"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:focusable="true"
-            app:button_text="Try Again"
-            app:footer_text="An Error occurred"
-            app:footer_visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:message="Failed to Load"
-            app:onClickRetry="@{() -> viewmodel.reload}" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_login_layout"
@@ -340,7 +325,8 @@
             android:id="@+id/loading_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:visibility="@{viewmodel.loadingState}"
+            tools:visibility="visible">
 
             <View
                 android:id="@+id/loading_canvas"

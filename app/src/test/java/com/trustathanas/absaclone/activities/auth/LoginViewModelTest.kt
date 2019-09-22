@@ -1,9 +1,7 @@
 package com.trustathanas.absaclone.activities.auth
 
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import android.os.Build
-import com.trustathanas.absaclone.App
+import androidx.lifecycle.ViewModelProviders
 import com.trustathanas.absaclone.models.Login
 import com.trustathanas.absaclone.repositories.LoginRepository
 import junit.framework.Assert.assertNotNull
@@ -12,6 +10,7 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mock
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
@@ -21,19 +20,19 @@ import org.robolectric.annotation.Config
 @Config(sdk = [Build.VERSION_CODES.O_MR1], packageName = "com.trustathanas.absaclone")
 class LoginViewModelTest {
 
-    @io.mockk.impl.annotations.MockK
+    @Mock
     private lateinit var loginViewModel: LoginViewModel
 
-    @io.mockk.impl.annotations.MockK
+    @Mock
     private lateinit var repository: LoginRepository
 
-    private lateinit var loginActivity: LoginActivity
+    private lateinit var activityLogin: ActivityLogin
 
 
     @Before
     fun setUp() {
-        loginActivity = Robolectric.setupActivity(LoginActivity::class.java)
-        loginViewModel = ViewModelProviders.of(loginActivity).get(LoginViewModel::class.java)
+        activityLogin = Robolectric.setupActivity(ActivityLogin::class.java)
+        loginViewModel = ViewModelProviders.of(activityLogin).get(LoginViewModel::class.java)
     }
 
     @Test

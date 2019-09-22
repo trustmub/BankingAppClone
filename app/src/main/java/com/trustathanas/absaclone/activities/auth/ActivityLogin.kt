@@ -1,32 +1,31 @@
 package com.trustathanas.absaclone.activities.auth
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.library.baseAdapters.BR.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import android.content.Intent
-import android.os.Bundle
-import androidx.fragment.app.DialogFragment
-import androidx.core.content.ContextCompat
-import android.view.View
-import androidx.databinding.DataBindingUtil
 import com.trustathanas.absaclone.App
 import com.trustathanas.absaclone.R
 import com.trustathanas.absaclone.SessionManager
 import com.trustathanas.absaclone.activities.TermsActivity
 import com.trustathanas.absaclone.activities.contactus.ContactsActivity
-import com.trustathanas.absaclone.activities.home.MainActivity
 import com.trustathanas.absaclone.activities.resetaccount.ResetPasscodeActivity
+import com.trustathanas.absaclone.databinding.ActivityLoginBinding
 import com.trustathanas.absaclone.models.Login
 import com.trustathanas.absaclone.models.LoginModel
-import com.trustathanas.absaclone.models.Response
 import com.trustathanas.absaclone.viewmodels.ViewModelProviderFactory
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
 
-class LoginActivity : DaggerAppCompatActivity() {
+class ActivityLogin : DaggerAppCompatActivity() {
 
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
@@ -34,54 +33,34 @@ class LoginActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var sessionManager: SessionManager
 
-    private lateinit var binding: LoginActivityBinding
+    private lateinit var binding: ActivityLoginBinding
+    private lateinit var loginViewModel: LoginViewModel
 
 
-    val tag: String = "LoginActivity"
+    val tag: String = "ActivityLogin"
     fun getLayout(): Int = R.layout.activity_login
 
-    private lateinit var loginViewModel: LoginViewModel
 
     var passcodeSequence: MutableList<Int> = mutableListOf()
     val passcodeLiveData: MutableLiveData<List<Int>> = MutableLiveData()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-//        setContentView(getLayout())
-        this.init()
+
+        binding = DataBindingUtil.setContentView(this, getLayout(), null)
+
+        loginViewModel = ViewModelProviders.of(this, providerFactory).get(LoginViewModel::class.java)
+
+        binding.setVariable(viewModel, loginViewModel)
+
         this.subscribeObservers()
         listenToClicks()
-    }
-
-    private fun init() {
-        loginViewModel = ViewModelProviders.of(this, providerFactory).get(LoginViewModel::class.java)
     }
 
     private fun subscribeObservers() {
         loginViewModel.observerAuthState().observe(this, Observer { userAuthResource ->
             userAuthResource?.let { userResource ->
-                when (userResource.status) {
-                    AuthResource.Status.LOADING -> {
-                        showProgressBar(true)
-                    }
-                    AuthResource.Status.AUTHENTICATED -> {
-                        showProgressBar(false)
-                        resetMarker()
-                        startActivity(Intent(this, MainActivity::class.java))
-                        // set the session values and navigate to the home page
-                    }
-                    AuthResource.Status.ERROR -> {
-                        println("could not Error ${userAuthResource.data}")
-                        resetMarker()
-                        showProgressBar(false)
-                        // show dialog of failed login
-                    }
-                    AuthResource.Status.NOT_AUTHENTICATED -> {
-                        println("could not authenticate")
-                        showProgressBar(false)
-                    }
-                }
+                loginViewModel.actionOnResponse(userResource)
             }
         })
 
@@ -90,10 +69,6 @@ class LoginActivity : DaggerAppCompatActivity() {
                 if (it.size == 5) attemptLogin()
             }
         })
-    }
-
-    private fun showProgressBar(status: Boolean) {
-        if (status) loading_layout.visible() else loading_layout.gone()
     }
 
     private fun listenToClicks() {

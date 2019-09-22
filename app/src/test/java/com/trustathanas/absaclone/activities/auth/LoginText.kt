@@ -7,6 +7,6 @@ import org.robolectric.annotation.Config
 @Config(sdk = [28])
 abstract class LoginTest {
     protected fun createContext(): Context {
-        return Robolectric.buildActivity(LoginActivity::class.java).create().get()
+        return Robolectric.buildActivity(ActivityLogin::class.java).create().get()
     }
 }

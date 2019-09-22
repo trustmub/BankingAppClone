@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import com.trustathanas.absaclone.SessionManager
 import com.trustathanas.absaclone.activities.auth.AuthResource
-import com.trustathanas.absaclone.activities.auth.LoginActivity
+import com.trustathanas.absaclone.activities.auth.ActivityLogin
 import javax.inject.Inject
 
 
@@ -50,7 +50,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     private fun navigateToLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, ActivityLogin::class.java)
         startActivity(intent)
         finish()
 

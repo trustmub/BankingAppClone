@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.auth.LoginActivity">
+        <activity android:name=".activities.auth.ActivityLogin">
 
         </activity>
 

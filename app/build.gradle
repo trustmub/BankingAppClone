@@ -81,7 +81,7 @@ dependencies {
 
     def glide_version = "4.9.0"
     implementation "com.github.bumptech.glide:glide:$glide_version"
-    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
 
 
     def rxkotlin_version = '2.3.0'
@@ -125,8 +125,15 @@ dependencies {
     testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.3.1"
 
     // mockk.io mocking library designed for Kotlin
-    androidTestImplementation "io.mockk:mockk-android:1.9.3"
-    testImplementation "io.mockk:mockk:1.9.3"
+//    androidTestImplementation "io.mockk:mockk-android:1.9.3"
+//    testImplementation "io.mockk:mockk:1.9.3"
+
+    /** mockito library */
+    testImplementation "org.mockito:mockito-core:2.28.2"
+
+    /** mockito nhaarman */
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0"
+
 
     // robolectric framework
     testImplementation 'org.robolectric:robolectric:4.3'

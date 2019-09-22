@@ -1,6 +1,6 @@
 package com.trustathanas.absaclone.di
 
-import com.trustathanas.absaclone.activities.auth.LoginActivity
+import com.trustathanas.absaclone.activities.auth.ActivityLogin
 import com.trustathanas.absaclone.activities.home.MainActivity
 import com.trustathanas.absaclone.activities.register.RegisterActivity
 import com.trustathanas.absaclone.di.Auth.AuthModule
@@ -24,7 +24,7 @@ abstract class ActivityBuilderModule {
     @ContributesAndroidInjector(
             modules = [AuthViewModelModule::class, AuthModule::class]
     )
-    abstract fun contributesLoginActivity(): LoginActivity
+    abstract fun contributesLoginActivity(): ActivityLogin
 
     @HomeScope
     @ContributesAndroidInjector(

@@ -3,7 +3,6 @@ package com.trustathanas.absaclone.activities.home
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
-import android.location.LocationManager
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.view.Menu
@@ -14,7 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import com.trustathanas.absaclone.R
 import com.trustathanas.absaclone.SessionManager
 import com.trustathanas.absaclone.activities.auth.AuthResource
-import com.trustathanas.absaclone.activities.auth.LoginActivity
+import com.trustathanas.absaclone.activities.auth.ActivityLogin
 import com.trustathanas.absaclone.viewmodels.ViewModelProviderFactory
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
@@ -80,7 +79,7 @@ open class MainActivity : DaggerAppCompatActivity() {
     }
 
     private fun navigateToLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, ActivityLogin::class.java)
         startActivity(intent)
         finish()
 
