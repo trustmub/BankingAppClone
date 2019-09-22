@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.library.baseAdapters.BR.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -51,7 +50,7 @@ class ActivityLogin : DaggerAppCompatActivity() {
 
         loginViewModel = ViewModelProviders.of(this, providerFactory).get(LoginViewModel::class.java)
 
-        binding.setVariable(viewModel, loginViewModel)
+        binding.viewModel = loginViewModel
 
         this.subscribeObservers()
         listenToClicks()

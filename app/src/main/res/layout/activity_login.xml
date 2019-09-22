@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View"/>
+
         <variable
             name="viewModel"
             type="com.trustathanas.absaclone.activities.auth.LoginViewModel" />
@@ -325,7 +328,7 @@
             android:id="@+id/loading_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="@{viewmodel.loadingState}"
+            android:visibility="@{viewModel.loadingState ? View.VISIBLE : View.GONE}"
             tools:visibility="visible">
 
             <View
