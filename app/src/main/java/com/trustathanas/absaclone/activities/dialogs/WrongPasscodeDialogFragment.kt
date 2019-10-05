@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.trustathanas.absaclone.R
 
-class WrongPasscodeDialogFragment : androidx.fragment.app.DialogFragment() {
+class WrongPasscodeDialogFragment : DialogFragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

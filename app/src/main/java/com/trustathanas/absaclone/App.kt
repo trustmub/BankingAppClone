@@ -1,14 +1,11 @@
 package com.trustathanas.absaclone
 
+import android.annotation.SuppressLint
 import android.content.Context
 import com.trustathanas.absaclone.di.DaggerAppComponent
-import com.trustathanas.absaclone.utilities.ApplicationDatabaseInstance
 import com.trustathanas.absaclone.utilities.SharedPreferencesMain
-import com.trustathanas.absaclone.webservices.AuthAPI
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
 
 
 class App : DaggerApplication() {
@@ -19,6 +16,7 @@ class App : DaggerApplication() {
     }
 
     companion object {
+        @SuppressLint("StaticFieldLeak")
         lateinit var prefes: SharedPreferencesMain
         lateinit var appContext: Context
 
