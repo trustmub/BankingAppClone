@@ -1,11 +1,12 @@
 package com.trustathanas.absaclone.webservices
 
-import androidx.lifecycle.LiveData
-import com.trustathanas.absaclone.models.*
+import com.trustathanas.absaclone.models.AuthResponse
+import com.trustathanas.absaclone.models.Login
+import com.trustathanas.absaclone.models.Register
+import com.trustathanas.absaclone.models.RegisterResponse
 import com.trustathanas.absaclone.models.account_services.AccountServices
-import io.reactivex.Flowable
-import kotlinx.coroutines.Deferred
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
@@ -15,11 +16,12 @@ interface AuthService {
     //    @GET("users/{user}/repos")
 //    fun login(@Path("user") user: String): Call<AuthModel>
 
+    @Headers("Content-Type: application/json")
     @POST("login/")
-    fun login(@Body login: Login): Call<AuthResponse>
+    suspend fun login(@Body login: Login): Response<AuthResponse>
 
     @POST("login/")
-    fun userLogin(@Body login: Login): Flowable<AuthResponse>
+    fun userLogin(@Body login: Login): Response<AuthResponse>
 
     @Headers("Content-Type: application/json")
     @POST("login/register/")

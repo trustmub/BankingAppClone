@@ -23,7 +23,7 @@ class LoginViewModel @Inject constructor() : ViewModel() {
 
     fun setObserverAuthState(state: LiveData<AuthResource<Response>>) = repository.setObserverAuthState(state)
 
-    fun loginUser(login: Login) = repository.loginUser(login)
+//    fun loginUser(login: Login) = repository.loginUser(login)
 
     fun manuallyAddUser(user: LoginModel) = repository.manuallyAddUser(user)
 

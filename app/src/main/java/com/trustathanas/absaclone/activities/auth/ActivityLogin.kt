@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -14,6 +15,7 @@ import com.trustathanas.absaclone.R
 import com.trustathanas.absaclone.SessionManager
 import com.trustathanas.absaclone.activities.TermsActivity
 import com.trustathanas.absaclone.activities.contactus.ContactsActivity
+import com.trustathanas.absaclone.activities.home.MainActivity
 import com.trustathanas.absaclone.activities.resetaccount.ResetPasscodeActivity
 import com.trustathanas.absaclone.databinding.ActivityLoginBinding
 import com.trustathanas.absaclone.models.Login
@@ -58,8 +60,23 @@ class ActivityLogin : DaggerAppCompatActivity() {
 
     private fun subscribeObservers() {
         loginViewModel.observerAuthState().observe(this, Observer { userAuthResource ->
-            userAuthResource?.let { userResource ->
-                loginViewModel.actionOnResponse(userResource)
+//            userAuthResource?.let { userResource ->
+//                loginViewModel.actionOnResponse(userResource)
+//            }
+        })
+
+        loginViewModel.getViewState().observe(this, Observer {
+            when (it) {
+                is LoginViewModel.ViewState.LoadingState -> {
+                    loading_layout.isVisible = true
+                }
+                is LoginViewModel.ViewState.SuccessState -> {
+                    loading_layout.isVisible = false
+                    navigateToHomeScreen()
+                }
+                is LoginViewModel.ViewState.FailedState -> {
+                    loading_layout.isVisible = false
+                }
             }
         })
 
@@ -126,24 +143,23 @@ class ActivityLogin : DaggerAppCompatActivity() {
         passcodeLiveData.postValue(passcodeSequence)
 
 
-        val passcodeCount = passcodeSequence.size
-        when (passcodeCount) {
-            1 -> v_one.setBackground(color)
-            2 -> v_two.setBackground(color)
-            3 -> v_three.setBackground(color)
-            4 -> v_four.setBackground(color)
-            5 -> v_five.setBackground(color)
+        when (passcodeSequence.size) {
+            1 -> v_one.background = color
+            2 -> v_two.background = color
+            3 -> v_three.background = color
+            4 -> v_four.background = color
+            5 -> v_five.background = color
         }
     }
 
     private fun resetMarker() {
         passcodeSequence.clear()
         val color = ContextCompat.getDrawable(this, R.drawable.passcode_markers)
-        v_one.setBackground(color)
-        v_two.setBackground(color)
-        v_three.setBackground(color)
-        v_four.setBackground(color)
-        v_five.setBackground(color)
+        v_one.background = color
+        v_two.background = color
+        v_three.background = color
+        v_four.background = color
+        v_five.background = color
 
     }
 
@@ -192,6 +208,13 @@ class ActivityLogin : DaggerAppCompatActivity() {
     }
 
     /**********************************/
+
+    /** Navigation conditions **/
+
+    private fun navigateToHomeScreen() {
+        val resetIntent = Intent(this, MainActivity::class.java)
+        startActivity(resetIntent)
+    }
 
 
     /** Click functions for loginActivity */

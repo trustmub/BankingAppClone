@@ -1,8 +1,10 @@
 package com.trustathanas.absaclone.activities.auth
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.trustathanas.absaclone.App
 import com.trustathanas.absaclone.models.Login
 import com.trustathanas.absaclone.models.LoginModel
@@ -17,6 +19,9 @@ class LoginViewModel @Inject constructor() : ViewModel() {
 
     private val ioContext: CoroutineContext = Dispatchers.IO
     private val uiContext: CoroutineContext = Dispatchers.Main
+
+    private val viewState: MutableLiveData<ViewState> = MutableLiveData()
+    fun getViewState(): LiveData<ViewState> = viewState
 
     private val uiScope = CoroutineScope(uiContext + Job())
 
@@ -45,20 +50,49 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         repository.setObserverAuthState(state)
     }
 
-    fun loginUser(login: Login) = repository.loginUser(login)
+    fun loginUser(login: Login) {
+        viewModelScope.launch {
+            kotlin.runCatching {
+                setViewState(ViewState.LoadingState)
+                _loadingState.postValue(true)
+                withContext(ioContext) {
+                    repository.loginUser(login)
+                }
+            }.onSuccess {
+                _loadingState.postValue(false)
+                if (it?.response != null) {
+                    mapCustomerDetails(it.response!!)
+                    setViewState(ViewState.SuccessState)
+                } else {
+                    setViewState(ViewState.FailedState)
 
-    fun manuallyAddUser(user: LoginModel) = repository.manuallyAddUser(user)
+                }
+                // navigate to main screen
+                println("navigate to home screen")
+            }.onFailure {
+                _loadingState.postValue(false)
+                Log.e(this.javaClass.name, it.message)
+            }
+        }
+    }
+
+    private fun mapCustomerDetails(response: Response) {
+        response.user
+        response.customer
+    }
+
+    fun manuallyAddUser(user: LoginModel) {
+        viewModelScope.launch {
+            withContext(ioContext) {
+                repository.manuallyAddUser(user)
+            }
+        }
+    }
 
     fun setLoggedInUserDetails(email: String, fullName: String, passCode: Int = 12345) {
         if (App.prefes.username.isNullOrEmpty()) App.prefes.username = email
         if (App.prefes.fullname.isNullOrEmpty()) App.prefes.fullname = fullName
         if (App.prefes.passCode.equals(null)) App.prefes.passCode = passCode
-    }
-
-    fun attemptlogin() {
-        uiScope.launch(Dispatchers.IO) {
-
-        }
     }
 
     private fun showProgressBar(status: Boolean) {
@@ -91,6 +125,16 @@ class LoginViewModel @Inject constructor() : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         uiScope.coroutineContext.cancel()
+    }
+
+    private fun setViewState(state: ViewState) {
+        viewState.postValue(state)
+    }
+
+    sealed class ViewState {
+        object LoadingState : ViewState()
+        object SuccessState : ViewState()
+        object FailedState : ViewState()
     }
 
 }
